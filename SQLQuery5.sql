@@ -29,3 +29,5 @@ select * from shopping;
 delete from shopping where order_id=2;
 
 update shopping set product_name='laptop' where order_id=5;
+
+update shopping set order_id=10 where order_id=3;
