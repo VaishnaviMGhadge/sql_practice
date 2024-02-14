@@ -185,3 +185,33 @@ where Order_Date between '2020-01-01' and '2020-12-31'
 group by Region,Ship_Mode;
 
 
+
+--9 find out those students who have same marks in chemistry and physics 
+
+select student_id,marks ,count(1) as countt,count(distinct marks) as distinct_marks   from exams
+where subject in ('Chemistry','Physics')
+group by student_id,marks
+having count(1)=2 and count(distinct marks)=1;
+
+--IMPORTANT --
+
+---------------------------------------------------------------------------
+--It will WORK!!!!!! :(
+
+select student_id 
+from exams
+group by student_id;
+
+----------------------------------------------------------------------------
+--This will also work!!! :(
+select student_id 
+from exams
+group by student_id,marks
+
+-----------------------------------------------------------------------------
+-- This will not work :(
+select student_id,makrs
+from exams
+group by student_id
+
+
