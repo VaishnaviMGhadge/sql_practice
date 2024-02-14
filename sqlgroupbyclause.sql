@@ -149,10 +149,39 @@ insert into exams values (1,'Chemistry',91),(1,'Physics',91),(1,'Maths',92)
 select * from exams;
 
 --write a query to find students who have got same marks in Physics and Chemistry
+select student_id,count(*) as total_records,count(distinct(Marks)) as unique_records from exams
+where subject in ('Chemistry','Physics')
+group by student_id
+having count(*)=2 and count(distinct(Marks))=1;
+
+
+select student_id,marks,count(1) as total_rows from exams
+where subject in ('Chemistry','Physics')
+group by student_id,marks
+having count(1)=2
+order by student_id;
+
 
 select * from exams 
 where subject='Chemistry' or subject='Physics';
 
 --6- write a query to find total number of products in each category.
 
-select * from Orders;
+select Category,count(Product_ID) 
+from Orders
+group by Category;
+
+--7- write a query to find top 5 sub categories in west region by total quantity sold
+select top 5 Sub_Category,sum(Quantity) as total from Orders
+where Region='West'
+group by Sub_Category
+order by total desc;
+
+--8- write a query to find total sales for each region and ship mode combination for orders in year 2020
+
+select Region,Ship_Mode,sum(Sales) as total_Sales
+from Orders
+where Order_Date between '2020-01-01' and '2020-12-31'
+group by Region,Ship_Mode;
+
+
