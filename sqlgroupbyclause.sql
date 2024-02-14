@@ -196,14 +196,14 @@ having count(1)=2 and count(distinct marks)=1;
 --IMPORTANT --
 
 ---------------------------------------------------------------------------
---It will WORK!!!!!! :(
+--It will WORK!!!!!! :)
 
 select student_id 
 from exams
 group by student_id;
 
 ----------------------------------------------------------------------------
---This will also work!!! :(
+--This will also work!!! :)
 select student_id 
 from exams
 group by student_id,marks
